@@ -8,6 +8,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 public class InterviewApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NettyUseApplication.class, args);
+        SpringApplication.run(InterviewApplication.class, args);
     }
 }
