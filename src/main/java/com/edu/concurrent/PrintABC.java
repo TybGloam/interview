@@ -67,6 +67,7 @@ public class PrintABC implements Runnable {
 
         Thread ct = new Thread(c);
         at.start();
+
         ct.start();
         bt.start();
 
