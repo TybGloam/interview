@@ -1,8 +1,11 @@
 package com.edu.algorithm.sort;
 
+
 import java.util.LinkedList;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 /**
+ * 自定义双向链表
  * Created by zhangxuan on 2019/3/20.
  */
 public class DoubleLinked<T> {
@@ -38,11 +41,11 @@ public class DoubleLinked<T> {
         }
     }
 
+
     public static void main(String[] args) {
         DoubleLinked<Integer> list = new DoubleLinked<>();
         for (int i = 0; i < 10; i++) {
             list.add(i);
-
         }
         System.out.println(list);
     }
