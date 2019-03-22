@@ -2,6 +2,8 @@ package com.edu.ioc;
 
 
 
+import com.edu.aop.AopUtils;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -19,9 +21,10 @@ public class IocContext {
     public static final Map<Class<?>,Object> applicationContext = new ConcurrentHashMap<>();
 
     static {
-        String packageName = "com.edu.ioc";
+        String packageName = "com.edu";
         try {
             init(packageName);
+            AopUtils.initAop(packageName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,6 +40,7 @@ public class IocContext {
         IocUtils.inject();
     }
 
+
     /**
      * 获取指定包路径下实现Component主键Bean的实例
      * @param path
@@ -48,7 +52,6 @@ public class IocContext {
 
             if (files != null){
                 for (File file : files) {
-                    String name = file.getName();
                     String fileName = file.getName();
                     if (file.isFile()){
                         Class<?> clazz = Class.forName(packageName + "." + fileName.substring(0, fileName.lastIndexOf(".")));
@@ -69,7 +72,7 @@ public class IocContext {
     }
 
     //根据filePath 获取所有文件
-    private static File[] getClassfile(String filePath){
+    public static File[] getClassfile(String filePath){
         return new File(filePath).listFiles(new FileFilter() {
             @Override
             public boolean accept(File file) {

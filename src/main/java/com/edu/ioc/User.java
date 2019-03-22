@@ -6,16 +6,49 @@ package com.edu.ioc;
  */
 public class User {
 
-    private String name;
+    private String firstName;
+
+    private String lastName;
 
     private int age;
 
-    public String getName() {
-        return name;
+    private String company;
+
+    private String job;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", company='" + company + '\'' +
+                ", job='" + job + '\'' +
+                '}';
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public User(String firstName, String lastName, int age, String company, String job) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.company = company;
+        this.job = job;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -26,16 +59,19 @@ public class User {
         this.age = age;
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public String getCompany() {
+        return company;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
 }
