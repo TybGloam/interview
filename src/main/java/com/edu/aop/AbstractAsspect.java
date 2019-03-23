@@ -7,6 +7,7 @@ import org.mockito.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
+ * aspect抽象类 切点需要继承该类 并实现前后置方法
  * Created by zhangxuan on 2019/3/22.
  */
 public abstract class AbstractAsspect implements MethodInterceptor {
@@ -42,7 +43,7 @@ public abstract class AbstractAsspect implements MethodInterceptor {
         if (proxyMethod != null && proxyMethod.equals(method.getName())) {
             doBefore();
         }
-        result = methodProxy.invoke(o,objects);
+        result = methodProxy.invokeSuper(o,objects);
         if (proxyMethod != null && proxyMethod.equals(method.getName())) {
             doAfter();
         }

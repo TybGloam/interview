@@ -25,6 +25,7 @@ public class IocContext {
         try {
             init(packageName);
             AopUtils.initAop(packageName);
+            IocUtils.inject();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,7 +38,6 @@ public class IocContext {
             addClassByAnnotation(resource.nextElement().getPath(),packageName);
         }
 
-        IocUtils.inject();
     }
 
 

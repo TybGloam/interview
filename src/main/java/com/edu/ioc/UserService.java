@@ -7,6 +7,9 @@ package com.edu.ioc;
 public class UserService {
 
     public User getUser(){
-        return new User("赵","旭兵",33,"北京善义善美科技有限公司-技术中心-支付财务组","Java开发工程师");
+        User user = new User("赵", "旭兵", 33, "北京善义善美科技有限公司-技术中心-支付财务组", "Java开发工程师");
+        System.out.println(user);
+
+        return user;
     }
 }

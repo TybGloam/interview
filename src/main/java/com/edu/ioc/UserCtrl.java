@@ -10,8 +10,7 @@ public class UserCtrl {
     private UserService userService;
 
     public void getUser(){
-        User user = userService.getUser();
-        System.out.println(user);
+        userService.getUser();
     }
 
     public static void main(String[] args) {
