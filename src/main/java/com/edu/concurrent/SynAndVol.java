@@ -26,12 +26,13 @@ public class SynAndVol implements Runnable {
     public void run() {
 //        System.out.println(Thread.currentThread().getName());
         i1++;
-        i2++;
         try {
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
-            System.out.println("sleep");
+            e.printStackTrace();
         }
+        i2++;
+
     }
 
     public void get(){
@@ -42,9 +43,11 @@ public class SynAndVol implements Runnable {
 
     public static void main(String[] args) throws InterruptedException {
         SynAndVol synAndVol = new SynAndVol();
-        Thread t = new Thread(synAndVol);
-        Thread.sleep(500);
-        t.start();
-        synAndVol.get();
+        for (int i = 0; i < 10000; i++) {
+            Thread t = new Thread(synAndVol);
+            t.start();
+
+        }
+
     }
 }

@@ -101,6 +101,30 @@ public class BinaryTree {
         return list;
     }
 
+    public List tail(){
+        List<Integer> result = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        if (root == null) return null;
+        Node cur,pre = null;
+        stack.push(root);
+        while (!stack.isEmpty()){
+            cur = stack.pop();
+            if ((cur.lChild == null && cur.rChild == null) || (pre != null &&(pre == cur.lChild || pre == cur.rChild))){
+                result.add(cur.data);
+                pre = cur;
+            }else {
+                stack.push(cur);
+                if (cur.rChild != null){
+                    stack.push(cur.rChild);
+                }
+                if (cur.lChild != null){
+                    stack.push(cur.lChild);
+                }
+            }
+        }
+        return result;
+    }
+
 
     public void put(int data){
         //如果root为空时
@@ -141,6 +165,7 @@ public class BinaryTree {
         System.out.println(mid);
         List<Integer> bef = binaryTree.bef();
         System.out.println(bef);
+        System.out.println(binaryTree.tail());
         List<Integer> end = binaryTree.end();
         System.out.println(end);
     }
