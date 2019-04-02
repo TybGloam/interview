@@ -2,7 +2,11 @@ package com.edu.algorithm.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * 二叉树,本case使用查询二叉树
@@ -67,6 +71,31 @@ public class BinaryTree {
             }
         }
         return list;
+    }
+
+
+    public int height(Node node,int i){
+        if (node == null) return i;
+        i++;
+        return Math.max(height(node.lChild,i),height(node.rChild,i));
+    }
+
+    public List ceng(){
+        List result = new ArrayList();
+        Queue<Node> q = new LinkedBlockingQueue<>();
+        q.add(root);
+
+        while (!q.isEmpty()){
+            Node poll = q.poll();
+            result.add(poll.data);
+            if (poll.rChild != null){
+                q.add(poll.rChild);
+            }
+            if (poll.lChild != null){
+                q.add(poll.lChild);
+            }
+        }
+        return result;
     }
 
     public List<Integer> end(){
@@ -168,6 +197,9 @@ public class BinaryTree {
         System.out.println(binaryTree.tail());
         List<Integer> end = binaryTree.end();
         System.out.println(end);
+
+        System.out.println(binaryTree.height(binaryTree.root,0));
+        System.out.println(binaryTree.ceng());
     }
 
 }
